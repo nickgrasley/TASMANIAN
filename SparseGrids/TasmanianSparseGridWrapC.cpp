@@ -233,13 +233,13 @@ void tsgEvaluateBatch(void *grid, const double *x, int num_x, double *y){ ((Tasm
 void tsgEvaluateBatchGPUd(void *grid_void, const double *x, int num_x, double *y){
     auto *grid = (TasmanianSparseGrid*) grid_void;
 
-    grid->getAcceleration()->setDevice();
+    grid->getAccelerationContext()->setDevice();
     grid->evaluateBatchGPU(x, num_x, y);
 }
 void tsgEvaluateBatchGPUf(void *grid_void, const float *x, int num_x, float *y){
     auto *grid = (TasmanianSparseGrid*) grid_void;
 
-    grid->getAcceleration()->setDevice();
+    grid->getAccelerationContext()->setDevice();
     grid->evaluateBatchGPU(x, num_x, y);
 }
 
