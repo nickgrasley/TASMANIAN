@@ -231,13 +231,13 @@ void tsgDifferentiate(void *grid, const double *x, double *y){ ((TasmanianSparse
 
 void tsgEvaluateBatch(void *grid, const double *x, int num_x, double *y){ ((TasmanianSparseGrid*) grid)->evaluateBatch(x, num_x, y); }
 void tsgEvaluateBatchGPUd(void *grid_void, const double *x, int num_x, double *y){
-    auto *grid = (Tasmanian::TasmanianSparseGrid*) grid_void;
+    auto *grid = (TasmanianSparseGrid*) grid_void;
 
     grid->getAcceleration()->setDevice();
     grid->evaluateBatchGPU(x, num_x, y);
 }
 void tsgEvaluateBatchGPUf(void *grid_void, const float *x, int num_x, float *y){
-    auto *grid = (Tasmanian::TasmanianSparseGrid*) grid_void;
+    auto *grid = (TasmanianSparseGrid*) grid_void;
 
     grid->getAcceleration()->setDevice();
     grid->evaluateBatchGPU(x, num_x, y);
