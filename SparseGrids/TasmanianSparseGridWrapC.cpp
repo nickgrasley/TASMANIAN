@@ -230,8 +230,18 @@ void tsgIntegrate(void *grid, double *q){ ((TasmanianSparseGrid*) grid)->integra
 void tsgDifferentiate(void *grid, const double *x, double *y){ ((TasmanianSparseGrid*) grid)->differentiate(x, y); }
 
 void tsgEvaluateBatch(void *grid, const double *x, int num_x, double *y){ ((TasmanianSparseGrid*) grid)->evaluateBatch(x, num_x, y); }
-void tsgEvaluateBatchGPUd(void *grid, const double *x, int num_x, double *y){ ((TasmanianSparseGrid*) grid)->evaluateBatchGPU(x, num_x, y); }
-void tsgEvaluateBatchGPUf(void *grid, const float *x, int num_x, float *y){ ((TasmanianSparseGrid*) grid)->evaluateBatchGPU(x, num_x, y); }
+void tsgEvaluateBatchGPUd(void *grid_void, const double *x, int num_x, double *y){
+    auto *grid = (Tasmanian::TasmanianSparseGrid*) grid_void;
+
+    grid->getAcceleration()->setDevice();
+    grid->evaluateBatchGPU(x, num_x, y);
+}
+void tsgEvaluateBatchGPUf(void *grid_void, const float *x, int num_x, float *y){
+    auto *grid = (Tasmanian::TasmanianSparseGrid*) grid_void;
+
+    grid->getAcceleration()->setDevice();
+    grid->evaluateBatchGPU(x, num_x, y);
+}
 
 void tsgBatchGetInterpolationWeightsStatic(void *grid, const double *x, int num_x, double *weights){
     TasmanianSparseGrid* tsg = (TasmanianSparseGrid*) grid;
