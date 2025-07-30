@@ -501,7 +501,7 @@ void tsgGetGPUName(int gpu, int num_buffer, char *buffer, int *num_actual){
 
 void tsgLocalPolynomialClearGpuCaches(void *grid_void) {
                 if (grid_void == nullptr) return;
-                auto *grid = (GridLocalPolynomial*) grid_void;
+                auto *grid = (TasmanianSparseGrid*) grid_void;
                 grid->clearGpuCache();
 }
 
