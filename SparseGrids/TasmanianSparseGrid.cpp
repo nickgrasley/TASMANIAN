@@ -1744,11 +1744,8 @@ void TasmanianSparseGrid::clearGpuCache() {
     
     auto *local_poly_grid = dynamic_cast<GridLocalPolynomial*>(base.get());
     if (local_poly_grid) {
-        printf("Identified local polynomial grid");
         local_poly_grid->clearGpuCache();
         return;
-    } else {
-        printf("Local polynomial grid not identified");
     }
     
     // If you want to support other grid types with GPU caches in the future:
