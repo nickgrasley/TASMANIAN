@@ -498,11 +498,11 @@ void tsgGetGPUName(int gpu, int num_buffer, char *buffer, int *num_actual){
 
     *num_actual = (int) chars;
 }
+
 void tsgLocalPolynomialClearGpuCaches(void *grid_void) {
                 if (grid_void == nullptr) return;
                 auto *grid = (GridLocalPolynomial*) grid_void;
-                grid->clearGpuSurpluses();
-                grid->clearGpuBasisHierarchy();
+                grid->clearGpuCache();
 }
 
 void tsgDeleteInts(int *p){ delete[] p; }
