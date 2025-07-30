@@ -1887,6 +1887,8 @@ public:
      */
     static std::string getGPUName(int gpu);
 
+    void clearGpuCache();
+
     /*!
      * \brief Computes the values of the hierarchical function basis at the specified points (CUDA version).
      *
