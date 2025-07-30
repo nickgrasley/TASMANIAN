@@ -445,7 +445,6 @@ void GridLocalPolynomial::clearGpuSurpluses(){
 }
 
 void GridLocalPolynomial::clearGpuCache(){
-    printf("Clearing GPU caches");
     clearGpuSurpluses();
     clearGpuBasisHierarchy();
 }
