@@ -1755,5 +1755,6 @@ void TasmanianSparseGrid::clearGpuCache() {
     //     return;
     // }
 }
+}
 
 #endif
