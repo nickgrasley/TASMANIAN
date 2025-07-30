@@ -1744,8 +1744,11 @@ void TasmanianSparseGrid::clearGpuCache() {
     
     auto *local_poly_grid = dynamic_cast<GridLocalPolynomial*>(base.get());
     if (local_poly_grid) {
+        std::cout << "Clearing GPU cache for local polynomial grid.\n";
         local_poly_grid->clearGpuCache();
         return;
+    } else {
+        std::cout << "Did not detect local polynomial grid.\n";
     }
     
     // If you want to support other grid types with GPU caches in the future:
