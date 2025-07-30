@@ -444,6 +444,11 @@ void GridLocalPolynomial::clearGpuSurpluses(){
     if (gpu_cachef) gpu_cachef->surpluses.clear();
 }
 
+void GridLocalPolynomial::clearGpuCache(){
+    clearGpuSurpluses();
+    clearGpuBasisHierarchy();
+}
+
 void GridLocalPolynomial::updateValues(double const *vals){
     clearGpuSurpluses();
     if (needed.empty()){
