@@ -1739,6 +1739,21 @@ std::string TasmanianSparseGrid::getGPUName(int gpu){
     return AccelerationMeta::getGpuDeviceName(gpu);
 }
 
+void TasmanianSparseGrid::clearGpuCache() {
+    if (!base) return;  // No grid created yet
+    
+    auto *local_poly_grid = dynamic_cast<GridLocalPolynomial*>(base.get());
+    if (local_poly_grid) {
+        local_poly_grid->clearGpuCache();
+        return;
+    }
+    
+    // If you want to support other grid types with GPU caches in the future:
+    // auto *other_grid_type = dynamic_cast<OtherGridType*>(base.get());
+    // if (other_grid_type) {
+    //     other_grid_type->clearGpuCache();
+    //     return;
+    // }
 }
 
 #endif
