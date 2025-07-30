@@ -131,6 +131,8 @@ public:
     void buildSpareBasisMatrixStatic(const double x[], int num_x, int num_chunk, int *spntr, int *sindx, double *svals) const;
     int getSpareBasisMatrixNZ(const double x[], int num_x) const;
 
+    void clearGpuCache();
+
 protected:
     //! \brief Create a new grid with given parameters and moving the data out of the vectors and sets.
     GridLocalPolynomial(AccelerationContext const *acc, int cnum_dimensions, int cnum_outputs, int corder, TypeOneDRule crule, std::vector<int> &&pnts, std::vector<double> &&vals, std::vector<double> &&surps);
