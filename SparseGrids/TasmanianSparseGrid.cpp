@@ -1742,6 +1742,8 @@ std::string TasmanianSparseGrid::getGPUName(int gpu){
 void TasmanianSparseGrid::clearGpuCache() {
     if (!base) return;  // No grid created yet
     
+    acc_domain.reset();
+    
     auto *local_poly_grid = dynamic_cast<GridLocalPolynomial*>(base.get());
     if (local_poly_grid) {
         local_poly_grid->clearGpuCache();
